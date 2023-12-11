@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{FEAF8C8C-3BC2-48AB-A048-3339BB376117}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{FC5BEC89-D5F6-423F-B466-CA7787020EBA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{7B023015-9BEB-40BA-A8EA-ABD24245141A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RushTickets.Domain", "Core\RushTickets.Domain\RushTickets.Domain.csproj", "{18F58178-0594-4FA8-AD48-8A6103E0248E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RushTickets.Persistence", "Infrastructure\RushTickets.Persistence\RushTickets.Persistence.csproj", "{73D8F8F6-6500-41F0-B439-41BD799C4A99}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RushTickets.MVC", "Presentation\RushTickets.MVC\RushTickets.MVC.csproj", "{F0597A4B-4942-48F9-B373-E6C7D0A38F5C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RushTickets.Application", "Core\RushTickets.Application\RushTickets.Application.csproj", "{33C326BB-A113-4391-B232-9A4E57F5C4F1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{18F58178-0594-4FA8-AD48-8A6103E0248E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18F58178-0594-4FA8-AD48-8A6103E0248E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18F58178-0594-4FA8-AD48-8A6103E0248E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18F58178-0594-4FA8-AD48-8A6103E0248E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73D8F8F6-6500-41F0-B439-41BD799C4A99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73D8F8F6-6500-41F0-B439-41BD799C4A99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73D8F8F6-6500-41F0-B439-41BD799C4A99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73D8F8F6-6500-41F0-B439-41BD799C4A99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0597A4B-4942-48F9-B373-E6C7D0A38F5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0597A4B-4942-48F9-B373-E6C7D0A38F5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0597A4B-4942-48F9-B373-E6C7D0A38F5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0597A4B-4942-48F9-B373-E6C7D0A38F5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33C326BB-A113-4391-B232-9A4E57F5C4F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33C326BB-A113-4391-B232-9A4E57F5C4F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33C326BB-A113-4391-B232-9A4E57F5C4F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33C326BB-A113-4391-B232-9A4E57F5C4F1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{18F58178-0594-4FA8-AD48-8A6103E0248E} = {FEAF8C8C-3BC2-48AB-A048-3339BB376117}
+		{73D8F8F6-6500-41F0-B439-41BD799C4A99} = {FC5BEC89-D5F6-423F-B466-CA7787020EBA}
+		{F0597A4B-4942-48F9-B373-E6C7D0A38F5C} = {7B023015-9BEB-40BA-A8EA-ABD24245141A}
+		{33C326BB-A113-4391-B232-9A4E57F5C4F1} = {FEAF8C8C-3BC2-48AB-A048-3339BB376117}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EC474F8B-9789-4556-84D4-931671C85CAE}
+	EndGlobalSection
+EndGlobal
