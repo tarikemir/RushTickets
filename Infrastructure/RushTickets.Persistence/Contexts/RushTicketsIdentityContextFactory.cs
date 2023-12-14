@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RushTickets.Infrastructure.Contexts;
 
 namespace RushTickets.Persistence.Contexts
 {
@@ -15,7 +14,7 @@ namespace RushTickets.Persistence.Contexts
     {
         public RushTicketsIdentityContext CreateDbContext(string[] args)
         {
-            /*
+            
             IConfigurationRoot configuration = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
             .AddJsonFile("PrivateInformations.json")
@@ -28,7 +27,7 @@ namespace RushTickets.Persistence.Contexts
             optionsBuilder.UseNpgsql(connectionString);
 
             return new RushTicketsIdentityContext(optionsBuilder.Options);
-            */
+            
         }
     }
 }
