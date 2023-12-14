@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Resend;
 using RushTickets.Domain.Identity;
 using RushTickets.Persistence.Contexts;
 
@@ -8,6 +9,17 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services
+    .AddControllersWithViews()
+    .AddNToastNotifyToastr();
+
+builder.Services.AddOptions();
+builder.Services.AddHttpClient<ResendClient>();
+builder.Services.Configure<ResendClientOptions>(o =>
+{
+    o.ApiToken = "";
+});
+builder.Services.AddTransient<IResend, ResendClient>();
 var connectionString = builder.Configuration.GetSection("ConnectionStrings:PostgreSQL").Value;
 
 builder.Services.AddDbContext<RushTicketsIdentityContext>(options =>
