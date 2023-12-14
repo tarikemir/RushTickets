@@ -17,7 +17,7 @@ builder.Services.AddOptions();
 builder.Services.AddHttpClient<ResendClient>();
 builder.Services.Configure<ResendClientOptions>(o =>
 {
-    o.ApiToken = "";
+    o.ApiToken = "re_EbbgxLM3_EYb16HjWZLWF2cBXRjFNibSq";
 });
 builder.Services.AddTransient<IResend, ResendClient>();
 var connectionString = builder.Configuration.GetSection("ConnectionStrings:PostgreSQL").Value;
@@ -27,7 +27,10 @@ builder.Services.AddDbContext<RushTicketsIdentityContext>(options =>
     options.UseNpgsql(connectionString);
 });
 
-
+builder.Services.AddDbContext<RushTicketsDbContext>(options =>
+{
+    options.UseNpgsql(connectionString);
+});
 builder.Services.AddSession();
 
 builder.Services.AddIdentity<User, Role>(options =>
@@ -88,5 +91,13 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
+app.MapControllerRoute(
+    name: "ticket",
+    pattern: "{controller=ticket}/{action=Index}/{id?}");
+app.MapControllerRoute(
+    name: "ticket",
+    pattern: "{controller=ticket}/{action=Index}/{id?}");
+app.MapControllerRoute(
+    name: "ticket",
+    pattern: "{controller=ticket}/{action=Index}/{id?}");
 app.Run();

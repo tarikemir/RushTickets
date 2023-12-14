@@ -24,10 +24,6 @@ namespace RushTickets.Persistence.Contexts
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
-            //modelBuilder.Ignore<Student>();
-            //modelBuilder.Ignore<Product>();
-            //modelBuilder.Ignore<Category>();
-            //modelBuilder.Ignore<ProductCategory>();
 
             base.OnModelCreating(modelBuilder);
         }

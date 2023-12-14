@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using RushTickets.Domain.Identity;
 
-namespace RushTickets.Persistence.Configurations.Identity
+namespace RushTickets.Persistence.Configurations.Configurations.Identity
 {
     public class UserSettingConfiguration : IEntityTypeConfiguration<UserSetting>
     {
