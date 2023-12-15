@@ -17,10 +17,10 @@ builder.Services.AddOptions();
 builder.Services.AddHttpClient<ResendClient>();
 builder.Services.Configure<ResendClientOptions>(o =>
 {
-    o.ApiToken = "re_EbbgxLM3_EYb16HjWZLWF2cBXRjFNibSq";
+    o.ApiToken = "re_c7Sx7psz_Hqp2PhDQn3UWJD3jJHPvkeH9";
 });
 builder.Services.AddTransient<IResend, ResendClient>();
-var connectionString = builder.Configuration.GetSection("ConnectionStrings:PostgreSQL").Value;
+var connectionString = builder.Configuration.GetSection("PostgreSQL").Value;
 
 builder.Services.AddDbContext<RushTicketsIdentityContext>(options =>
 {
@@ -63,7 +63,7 @@ builder.Services.ConfigureApplicationCookie(options =>
         Name = "YetgenJump",
         HttpOnly = true,
         SameSite = SameSiteMode.Strict,
-        SecurePolicy = CookieSecurePolicy.SameAsRequest // Always
+        SecurePolicy = CookieSecurePolicy.SameAsRequest 
     };
     options.SlidingExpiration = true;
     options.ExpireTimeSpan = System.TimeSpan.FromDays(7);
