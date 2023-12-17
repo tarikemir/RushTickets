@@ -31,5 +31,6 @@ namespace RushTickets.Persistence.Contexts
 
             base.OnModelCreating(modelBuilder);
         }
+
     }
 }

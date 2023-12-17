@@ -96,7 +96,7 @@ namespace RushTickets.MVC.Controllers
             htmlText = htmlText.Replace("{{ButtonLink}}", buttonLink);
 
             htmlText = htmlText.Replace("{{ButtonText}}", "Onayla");
-  */
+            */
             
 
 
