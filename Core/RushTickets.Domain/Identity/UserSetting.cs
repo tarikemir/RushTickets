@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RushTickets.Domain.Identity
 {
-    public class UserSetting: EntityBase<Guid>
+    public class UserSetting : EntityBase<Guid>
     {
         public Guid UserId { get; set; }
         public User User { get; set; }
