@@ -30,7 +30,7 @@ namespace RushTickets.MVC.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                return RedirectToAction(nameof(Index), "Home");
+                return RedirectToAction(nameof(Index), "Ticket");
             }
 
             var registerViewModel = new AuthRegisterViewModel();
@@ -141,19 +141,20 @@ namespace RushTickets.MVC.Controllers
         [HttpGet]
         public IActionResult Login()
         {
+            
             if (User.Identity.IsAuthenticated)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction(nameof(Index), "Ticket");
             }
-
+            
             var loginViewModel = new AuthLoginViewModel();
 
             return View(loginViewModel);
         }
 
-    }
-/*
-  [HttpPost]
+    
+        
+        [HttpPost]
         public async Task<IActionResult> LoginAsync(AuthLoginViewModel loginViewModel)
         {
             if (!ModelState.IsValid)
@@ -179,8 +180,7 @@ namespace RushTickets.MVC.Controllers
 
             _toastNotification.AddSuccessToastMessage($"Welcome {user.UserName}!");
 
-            return RedirectToAction("Index",controllerName:"Students");
+            return RedirectToAction("Index",controllerName:"Ticket");
         }
     }
-}*/
 }

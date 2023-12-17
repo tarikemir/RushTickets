@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
+using RushTickets.Domain.Entities;
 using RushTickets.Domain.Identity;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,9 @@ namespace RushTickets.Persistence.Contexts
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
+            modelBuilder.Ignore<User>();
+            modelBuilder.Ignore<Role>();
+            modelBuilder.Ignore<UserSetting>();
 
             base.OnModelCreating(modelBuilder);
         }

@@ -16,10 +16,6 @@ namespace RushTickets.Persistence.Contexts
 
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            //optionsBuilder.UseNpgsql(Configurations.GetString("ConnectionStrings:PostgreSQL"));
-        }
 
     }
 }

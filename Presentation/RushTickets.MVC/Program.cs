@@ -5,7 +5,9 @@ using RushTickets.Domain.Identity;
 using RushTickets.Persistence.Contexts;
 using RushTickets.Domain.Identity;
 
+/*
 RushTickets context = new();
+
 
 #regin Interception
 
@@ -16,11 +18,12 @@ rushTickets1.Gender = NewGender;
 rushTickets1.LastModifiedOn = DateTime.UtcNow;
 rushTickets1.FirstName = NewFirstName;
 rushTickets1.LastName = NewLastName;
-rushTickets1.Description = "Description changed."
+rushTickets1.Description = "Description changed.";
 rushTickets1.User = NewUser;
 context.SaveChanges();
-}
+};
 #endregion
+*/
 
 var builder = WebApplication.CreateBuilder(args);
 
