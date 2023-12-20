@@ -3,31 +3,12 @@ using Microsoft.EntityFrameworkCore;
 using Resend;
 using RushTickets.Domain.Identity;
 using RushTickets.Persistence.Contexts;
-using RushTickets.Domain.Identity;
-
-/*
-RushTickets context = new();
 
 
-#regin Interception
 
-RushTickets rushTickets1 = new()
-{
-rushTickets1.CreatedOn = DateTime.UtcNow;
-rushTickets1.Gender = NewGender;
-rushTickets1.LastModifiedOn = DateTime.UtcNow;
-rushTickets1.FirstName = NewFirstName;
-rushTickets1.LastName = NewLastName;
-rushTickets1.Description = "Description changed.";
-rushTickets1.User = NewUser;
-context.SaveChanges();
-};
-#endregion
-*/
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddControllersWithViews();
 
 builder.Services
@@ -38,7 +19,7 @@ builder.Services.AddOptions();
 builder.Services.AddHttpClient<ResendClient>();
 builder.Services.Configure<ResendClientOptions>(o =>
 {
-    o.ApiToken = "re_c7Sx7psz_Hqp2PhDQn3UWJD3jJHPvkeH9";
+    o.ApiToken = "re_cEZZ5XVi_5VXHrgpU2TGw1KZZcfG9ge4j";
 });
 builder.Services.AddTransient<IResend, ResendClient>();
 var connectionString = builder.Configuration.GetSection("PostgreSQL").Value;
@@ -108,6 +89,13 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+{
+    //NOTE this line must be above .UseMvc() line.
+    app.UseNToastNotify();
+
+ 
+}
+
 
 app.MapControllerRoute(
     name: "default",

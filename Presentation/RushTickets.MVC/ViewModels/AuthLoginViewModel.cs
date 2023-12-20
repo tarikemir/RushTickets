@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace YetGenAkbankJump.IdentityMVC.ViewModels
+namespace RushTickets.MVC.ViewModels
 {
     public class AuthLoginViewModel
     {
