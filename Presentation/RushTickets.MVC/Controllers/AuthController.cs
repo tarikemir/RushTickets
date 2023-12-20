@@ -4,7 +4,7 @@ using NToastNotify;
 using Resend;
 using RushTickets.Domain.Identity;
 using RushTickets.MVC.ViewModels;
-using YetGenAkbankJump.IdentityMVC.ViewModels;
+using RushTickets.Persistence.Contexts;
 
 namespace RushTickets.MVC.Controllers
 {
@@ -24,6 +24,11 @@ namespace RushTickets.MVC.Controllers
             _resend = resend;
             _environment = environment;
         }
+
+
+
+
+
 
         [HttpGet]
         public IActionResult Register()
@@ -71,72 +76,24 @@ namespace RushTickets.MVC.Controllers
 
                 return View(registerViewModel);
             }
-            /*var token = await _userManager.GenerateEmailConfirmationTokenAsync(user); // token, UserId
 
-            token = HttpUtility.UrlEncode(token);
 
-            var buttonLink = $"https://localhost:7206/Auth/VerifyEmail?email={user.Email}&token={token}";
-
-            //
-            var wwwRootPath = _environment.WebRootPath;
-
-            var fullPathToHtml = Path.Combine(wwwRootPath, "email-templates", "verify-email.html");
-
-            var htmlText = await System.IO.File.ReadAllTextAsync(fullPathToHtml);
-
-            var title = "Seri Köz Getir - E-Posta Doğrulama";
-
-            // Title
-            htmlText = htmlText.Replace("{{Title}}", title);
-
-            // Description
-            htmlText = htmlText.Replace("{{Description}}",
-                "Uygulamamıza hoş geldiniz. E-Posta adresinizi doğrulamak için lütfen aşağıdaki \"Onayla\" butonuna tıklayınız.");
-
-            htmlText = htmlText.Replace("{{ButtonLink}}", buttonLink);
-
-            htmlText = htmlText.Replace("{{ButtonText}}", "Onayla");
-            */
-            
 
 
             _toastNotification.AddSuccessToastMessage("You've successfully registered to the application.");
+        
             var message = new EmailMessage();
-            message.From = "sudeopann@gmail.com";
+            message.From = "sudeopann@RushTickets.net";
             message.To.Add(user.Email);
             message.Subject = "Hello!";
             message.HtmlBody = "<div><strong>Greetings<strong> 👋🏻 from .NET</div>";
 
             await _resend.EmailSendAsync(message);
+            _toastNotification.AddSuccessToastMessage("You've successfully registered to the application.");
 
             return RedirectToAction(nameof(Login));
         }
-        /*
-          [HttpGet] // localhost:7206/Auth/VerifyEmail?email=alpertunga@gmail.com&token=gkomaskdlqwenmjasksdaasdadasd
-        public async Task<IActionResult> VerifyEmailAsync(string email, string token)
-        {
-
-            var user = await _userManager.FindByEmailAsync(email);
-
-           var identityResult = await _userManager.ConfirmEmailAsync(user, token);
-
-            if (!identityResult.Succeeded)
-            {
-                foreach (var error in identityResult.Errors)
-                {
-                    ModelState.AddModelError(error.Code, error.Description);
-                }
-
-                _toastNotification.AddErrorToastMessage("We unfortunately couldn't verify your email.");
-
-                return View();
-            }
-
-
-            _toastNotification.AddSuccessToastMessage("You've successfully verified your email address.");
-
-            return View();
-        }*/
+      
 
         [HttpGet]
         public IActionResult Login()
