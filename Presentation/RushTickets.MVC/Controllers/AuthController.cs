@@ -4,7 +4,6 @@ using NToastNotify;
 using Resend;
 using RushTickets.Domain.Identity;
 using RushTickets.MVC.ViewModels;
-using YetGenAkbankJump.IdentityMVC.ViewModels;
 
 namespace RushTickets.MVC.Controllers
 {
@@ -99,7 +98,7 @@ namespace RushTickets.MVC.Controllers
             */
             
 
-
+            
             _toastNotification.AddSuccessToastMessage("You've successfully registered to the application.");
             var message = new EmailMessage();
             message.From = "sudeopann@gmail.com";
@@ -108,7 +107,7 @@ namespace RushTickets.MVC.Controllers
             message.HtmlBody = "<div><strong>Greetings<strong> 👋🏻 from .NET</div>";
 
             await _resend.EmailSendAsync(message);
-
+            
             return RedirectToAction(nameof(Login));
         }
         /*

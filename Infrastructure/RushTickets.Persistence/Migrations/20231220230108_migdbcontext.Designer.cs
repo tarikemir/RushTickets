@@ -12,8 +12,8 @@ using RushTickets.Persistence.Contexts;
 namespace RushTickets.Persistence.Migrations
 {
     [DbContext(typeof(RushTicketsDbContext))]
-    [Migration("20231218215333_mig_1_db")]
-    partial class mig_1_db
+    [Migration("20231220230108_migdbcontext")]
+    partial class migdbcontext
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

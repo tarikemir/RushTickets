@@ -3,16 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using Resend;
 using RushTickets.Domain.Identity;
 using RushTickets.Persistence.Contexts;
-<<<<<<< Updated upstream
-=======
-using RushTickets.Domain.Identity;
 using RushTickets.Persistence.Repositories.TicketRepositories;
-using RushTickets.Application.Repositories.TicketRepositories;
-using RushTickets.Domain.Entities;
 
-/*
-RushTickets context = new();
->>>>>>> Stashed changes
+
 
 
 
@@ -25,7 +18,6 @@ builder.Services
     .AddControllersWithViews()
     .AddNToastNotifyToastr();
 
-<<<<<<< Updated upstream
 builder.Services.AddOptions();
 builder.Services.AddHttpClient<ResendClient>();
 builder.Services.Configure<ResendClientOptions>(o =>
@@ -33,9 +25,7 @@ builder.Services.Configure<ResendClientOptions>(o =>
     o.ApiToken = "re_cEZZ5XVi_5VXHrgpU2TGw1KZZcfG9ge4j";
 });
 builder.Services.AddTransient<IResend, ResendClient>();
-=======
 
->>>>>>> Stashed changes
 var connectionString = builder.Configuration.GetSection("PostgreSQL").Value;
 
 

@@ -50,9 +50,13 @@ namespace RushTicket.MVC.Controllers
                 return RedirectToAction("Index");
             }
 
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Auth");
+            }
             var ticket = new Ticket
             {
-
+                CreatedByUserId = User.Identity.Name,
                 Name = name,
                 Description = description,
                 Price = price

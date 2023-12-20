@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace RushTickets.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class mig_1_db : Migration
+    public partial class migdbcontext : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
