@@ -9,11 +9,11 @@ using RushTickets.Persistence.Contexts;
 
 #nullable disable
 
-namespace RushTickets.Persistence.Migrations.RushTicketsDb
+namespace RushTickets.Persistence.Migrations
 {
     [DbContext(typeof(RushTicketsDbContext))]
-    [Migration("20231217174209_TicketMig")]
-    partial class TicketMig
+    [Migration("20231218215333_mig_1_db")]
+    partial class mig_1_db
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,8 +31,30 @@ namespace RushTickets.Persistence.Migrations.RushTicketsDb
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<string>("CreatedByUserId")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTimeOffset>("CreatedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("DeletedByUserId")
+                        .HasColumnType("text");
+
+                    b.Property<DateTimeOffset?>("DeletedOn")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("Description")
                         .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTimeOffset?>("LastModifiedOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("ModifiedByUserId")
                         .HasColumnType("text");
 
                     b.Property<string>("Name")

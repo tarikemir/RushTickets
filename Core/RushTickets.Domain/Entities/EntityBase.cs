@@ -1,4 +1,6 @@
-﻿using System;
+﻿using RushTickets.Domain.Enums;
+using RushTickets.Domain.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,5 +24,28 @@ namespace RushTickets.Domain.Entities
         {
             throw new NotImplementedException();
         }
+    //    public class Ticket : EntityBase<Ticket>
+    //    {
+    //        public Guid Id { get; set; }
+    //        public string Name { get; set; }
+    //        public string Description { get; set; }
+    //        public decimal Price { get; set; }
+
+    //    }
+    //    public class User : EntityBase<User>
+    //    {
+    //        public string FirstName { get; set; }
+    //        public string SurName { get; set; }
+
+    //        public DateTimeOffset? BirthDate { get; set; }
+    //        public Gender Gender { get; set; }
+
+    //        public UserSetting UserSetting { get; set; }
+
+    //        public string CreatedByUserId { get; set; }
+    //        public DateTimeOffset CreatedOn { get; set; }
+    //        public string? ModifiedByUserId { get; set; }
+    //        public DateTimeOffset? LastModifiedOn { get; set; }
+    //    }
     }
 }

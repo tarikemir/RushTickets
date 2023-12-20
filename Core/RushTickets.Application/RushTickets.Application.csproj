@@ -6,4 +6,18 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Repositories\UserRepositories\**" />
+    <EmbeddedResource Remove="Repositories\UserRepositories\**" />
+    <None Remove="Repositories\UserRepositories\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.14" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RushTickets.Domain\RushTickets.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

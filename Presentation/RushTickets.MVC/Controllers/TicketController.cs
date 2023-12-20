@@ -3,21 +3,35 @@ using Microsoft.EntityFrameworkCore;
 using RushTickets.Persistence.Contexts;
 using System;
 using System.Linq;
+using RushTickets.Persistence.Repositories.TicketRepositories;
 using RushTickets.Domain.Entities;
 namespace RushTicket.MVC.Controllers
 {
     public class TicketController : Controller
     {
-        private readonly RushTicketsDbContext _dbContext;
+        //private readonly RushTicketsDbContext _dbContext;
 
-        public TicketController( RushTicketsDbContext dbContext)
+        //public TicketController( RushTicketsDbContext dbContext)
+        //{
+        //    _dbContext = dbContext;
+        //}
+
+        private readonly TicketReadRepository _ticketReadRepository;
+        private readonly TicketWriteRepository _ticketWriteRepository;
+    
+
+        public TicketController(TicketReadRepository ticketReadRepository, TicketWriteRepository ticketWriteRepository)
         {
-            _dbContext = dbContext;
+            _ticketReadRepository = ticketReadRepository;
+            _ticketWriteRepository = ticketWriteRepository;
+            
         }
+        
+
         [HttpGet]
         public IActionResult Index()
         {
-            List<Ticket> tickets = _dbContext.Tickets.ToList();
+            List<Ticket> tickets = _ticketReadRepository.GetAll();
             return View(tickets);
         }
 
@@ -44,8 +58,8 @@ namespace RushTicket.MVC.Controllers
                 Price = price
             };
 
-            _dbContext.Tickets.Add(ticket);
-            _dbContext.SaveChanges();
+            _ticketWriteRepository.Add(ticket);
+            _ticketWriteRepository.SaveChanges();
 
             return RedirectToAction("Index");
         }
