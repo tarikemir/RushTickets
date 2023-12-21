@@ -89,8 +89,8 @@ namespace RushTickets.MVC.Controllers
             message.HtmlBody = "<div><strong>Greetings<strong> 👋🏻 from .NET</div>";
 
             await _resend.EmailSendAsync(message);
-            
-           Console.WriteLine(message);
+
+            Console.WriteLine(message);
             _toastNotification.AddSuccessToastMessage("You've successfully registered to the application.");
 
             return RedirectToAction(nameof(Login));

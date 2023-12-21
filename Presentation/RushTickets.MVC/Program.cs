@@ -2,13 +2,28 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Resend;
 using RushTickets.Domain.Identity;
+using RushTickets.Persistence;
 using RushTickets.Persistence.Contexts;
-using RushTickets.Persistence.Repositories.TicketRepositories;
+
+/*
+RushTickets context = new();
 
 
+#regin Interception
 
-
-
+RushTickets rushTickets1 = new()
+{
+rushTickets1.CreatedOn = DateTime.UtcNow;
+rushTickets1.Gender = NewGender;
+rushTickets1.LastModifiedOn = DateTime.UtcNow;
+rushTickets1.FirstName = NewFirstName;
+rushTickets1.LastName = NewLastName;
+rushTickets1.Description = "Description changed.";
+rushTickets1.User = NewUser;
+context.SaveChanges();
+};
+#endregion
+*/
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,17 +32,15 @@ builder.Services.AddControllersWithViews();
 builder.Services
     .AddControllersWithViews()
     .AddNToastNotifyToastr();
-
+builder.Services.AddCustomValdiatorConfigure();
 builder.Services.AddOptions();
 builder.Services.AddHttpClient<ResendClient>();
 builder.Services.Configure<ResendClientOptions>(o =>
 {
-    o.ApiToken = "re_cEZZ5XVi_5VXHrgpU2TGw1KZZcfG9ge4j";
+    o.ApiToken = "re_HM4nzMN6_K25tXGZ6dpBmNis13KWR6qaz";
 });
 builder.Services.AddTransient<IResend, ResendClient>();
-
 var connectionString = builder.Configuration.GetSection("PostgreSQL").Value;
-
 
 builder.Services.AddDbContext<RushTicketsIdentityContext>(options =>
 {
@@ -38,18 +51,6 @@ builder.Services.AddDbContext<RushTicketsDbContext>(options =>
 {
     options.UseNpgsql(connectionString);
 });
-
-builder.Services.AddScoped< TicketReadRepository>();
-builder.Services.AddScoped< TicketWriteRepository>();
-builder.Services.AddOptions();
-builder.Services.AddHttpClient<ResendClient>();
-builder.Services.Configure<ResendClientOptions>(o =>
-{
-    o.ApiToken = "re_c7Sx7psz_Hqp2PhDQn3UWJD3jJHPvkeH9";
-});
-builder.Services.AddTransient<IResend, ResendClient>();
-
-
 builder.Services.AddSession();
 
 builder.Services.AddIdentity<User, Role>(options =>
@@ -82,7 +83,7 @@ builder.Services.ConfigureApplicationCookie(options =>
         Name = "YetgenJump",
         HttpOnly = true,
         SameSite = SameSiteMode.Strict,
-        SecurePolicy = CookieSecurePolicy.SameAsRequest 
+        SecurePolicy = CookieSecurePolicy.SameAsRequest
     };
     options.SlidingExpiration = true;
     options.ExpireTimeSpan = System.TimeSpan.FromDays(7);
@@ -110,7 +111,7 @@ app.UseAuthorization();
     //NOTE this line must be above .UseMvc() line.
     app.UseNToastNotify();
 
- 
+
 }
 
 

@@ -3,35 +3,24 @@ using Microsoft.EntityFrameworkCore;
 using RushTickets.Persistence.Contexts;
 using System;
 using System.Linq;
-using RushTickets.Persistence.Repositories.TicketRepositories;
 using RushTickets.Domain.Entities;
+using RushTickets.Persistence;
+using System.Net.Sockets;
+
 namespace RushTicket.MVC.Controllers
 {
     public class TicketController : Controller
     {
-        //private readonly RushTicketsDbContext _dbContext;
+        private readonly RushTicketsDbContext _dbContext;
 
-        //public TicketController( RushTicketsDbContext dbContext)
-        //{
-        //    _dbContext = dbContext;
-        //}
-
-        private readonly TicketReadRepository _ticketReadRepository;
-        private readonly TicketWriteRepository _ticketWriteRepository;
-    
-
-        public TicketController(TicketReadRepository ticketReadRepository, TicketWriteRepository ticketWriteRepository)
+        public TicketController(RushTicketsDbContext dbContext)
         {
-            _ticketReadRepository = ticketReadRepository;
-            _ticketWriteRepository = ticketWriteRepository;
-            
+            _dbContext = dbContext;
         }
-        
-
         [HttpGet]
         public IActionResult Index()
         {
-            List<Ticket> tickets = _ticketReadRepository.GetAll();
+            List<Ticket> tickets = _dbContext.Tickets.ToList();
             return View(tickets);
         }
 
@@ -42,30 +31,42 @@ namespace RushTicket.MVC.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateTicket(string name, string description, decimal price)
+        public IActionResult CreateTicket(TicketDto ticketDto)
         {
-            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(description))
+            //if (string.IsNullOrEmpty(ticketDto.Name) || string.IsNullOrEmpty(ticketDto.Description))
+            //{
+            //    TempData["ErrorMessage"] = "Name and description are required.";
+            //    return RedirectToAction("Index");
+            //}
+
+
+            if (!ModelState.IsValid)
             {
-                TempData["ErrorMessage"] = "Name and description are required.";
+                var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
+
+
+                ViewBag.ErrorMessages = errors;
+
+                return View();
+
+            }
+            else
+            {
+                var ticket = new Ticket
+                {
+
+                    Name = ticketDto.Name,
+                    Description = ticketDto.Description,
+                    Price = ticketDto.Price
+                };
+
+                _dbContext.Tickets.Add(ticket);
+                _dbContext.SaveChanges();
                 return RedirectToAction("Index");
+
             }
 
-            if (!User.Identity.IsAuthenticated)
-            {
-                return RedirectToAction("Login", "Auth");
-            }
-            var ticket = new Ticket
-            {
-                CreatedByUserId = User.Identity.Name,
-                Name = name,
-                Description = description,
-                Price = price
-            };
 
-            _ticketWriteRepository.Add(ticket);
-            _ticketWriteRepository.SaveChanges();
-
-            return RedirectToAction("Index");
         }
     }
 }

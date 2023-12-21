@@ -1,5 +1,5 @@
-﻿@using RushTickets.Domain.Entities;
-@model Ticket
+﻿﻿
+@model RushTickets.Domain.Entities.Ticket
 
 <h2>Create Ticket </h2>
 
@@ -16,5 +16,46 @@
         <label class="form-label">Price:</label>
         <input type="number" class="form-control" asp-for="Price" step="0.01" required />
     </div>
-    <button type="submit" class="btn btn-primary">Create</button> 
+    <button type="submit" class="btn btn-primary">Create</button>
+    <style>
+
+
+        .error-container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
+
+            .error-container h2 {
+                color: #e74c3c;
+            }
+
+            .error-container ul {
+                list-style-type: none;
+                padding: 0;
+            }
+
+            .error-container li {
+                color: #e74c3c;
+                margin: 5px 0;
+            }
+    </style>
+
+    @{
+        if (ViewBag.ErrorMessages != null)
+        {
+            <div class="error-container">
+                <h2>Error Messages</h2>
+                <ul>
+                    @foreach (var error in ViewBag.ErrorMessages)
+                    {
+                        <li>@error</li>
+                    }
+                </ul>
+            </div>
+        }
+    }
+
 </form>
