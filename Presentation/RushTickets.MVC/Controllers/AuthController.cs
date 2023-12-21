@@ -13,7 +13,7 @@ namespace RushTickets.MVC.Controllers
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly IToastNotification _toastNotification;
-        private readonly IResend _resend;
+        //private readonly IResend _resend;
         private readonly IWebHostEnvironment _environment;
 
         public AuthController(UserManager<User> userManager, IToastNotification toastNotification, SignInManager<User> signInManager, IResend resend, IWebHostEnvironment environment)
@@ -21,7 +21,7 @@ namespace RushTickets.MVC.Controllers
             _userManager = userManager;
             _toastNotification = toastNotification;
             _signInManager = signInManager;
-            _resend = resend;
+           // _resend = resend;
             _environment = environment;
         }
 
@@ -88,7 +88,7 @@ namespace RushTickets.MVC.Controllers
             message.Subject = "Hello!";
             message.HtmlBody = "<div><strong>Greetings<strong> 👋🏻 from .NET</div>";
 
-            await _resend.EmailSendAsync(message);
+           Console.WriteLine(message);
             _toastNotification.AddSuccessToastMessage("You've successfully registered to the application.");
 
             return RedirectToAction(nameof(Login));
