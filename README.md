@@ -29,7 +29,7 @@ Tarık Emir Kaldırım:Identity Mechanism, Toaster Notifications ve Dependency I
 
 Sude Nur Opan:Mail Authentication, Ticket page ve Interception Mechanism
 
-Volkan İnce:Repository Pattern
+Volkan İnce:Repository Pattern, Entity Changes
 
 İrem Demir:Interception Mechanism
 
